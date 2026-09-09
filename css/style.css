@@ -139,17 +139,8 @@ strong, b { font-weight: 600; }
   z-index: 60;
 }
 
-.brand { display: inline-flex; align-items: center; gap: 12px; }
-.brand__mark {
-  width: 44px; height: 44px; flex: 0 0 44px;
-  border-radius: 50%; background: var(--coral);
-  display: grid; place-items: center;
-}
-.brand__mark svg { width: 22px; height: 22px; }
-.brand__name {
-  font-size: 1.32rem; font-weight: 500; letter-spacing: -.01em; color: var(--coral);
-}
-.brand__name span { color: var(--coral); }
+.brand { display: inline-flex; align-items: center; }
+.brand__logo { height: 40px; width: auto; display: block; }
 
 .nav { margin-top: clamp(48px, 9vh, 96px); margin-bottom: auto; padding-bottom: 40px; }
 .nav__list { list-style: none; margin: 0; padding: 0; }
@@ -256,6 +247,7 @@ body.nav-open .nav-toggle span::after { transform: translateY(-7px) rotate(-45de
 .hero__text { max-width: 42ch; margin-bottom: 1.9em; }
 
 .hero__figure { position: relative; }
+.hero__figure-img { width: 100%; height: auto; display: block; }
 
 /* Banda con el pitch, debajo del hero */
 .pitch {
@@ -486,12 +478,6 @@ body.nav-open .nav-toggle span::after { transform: translateY(-7px) rotate(-45de
 .ph--teal { background: linear-gradient(140deg, #cdf4f1, #b3ece7); color: #64b5af; }
 .ph--round { border-radius: 50%; }
 
-/* ---------------------------------------------------------------- Footer -- */
-.footer { background: var(--coral); padding: 30px var(--gutter); text-align: center; }
-.footer .brand__mark { background: #fff; }
-.footer .brand__mark svg path { fill: var(--coral); }
-.footer .brand__name { color: #fff; }
-.footer__legal { color: rgba(255,255,255,.85); font-size: .74rem; margin-top: 14px; }
 
 /* ----------------------------------------------------------- Animaciones -- */
 .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
@@ -664,9 +650,7 @@ body.nav-open .nav-toggle span::after { transform: translateY(-7px) rotate(-45de
   background: var(--coral); padding: 26px var(--gutter);
   display: flex; justify-content: center;
 }
-.footer-bar .brand__mark { background: #fff; }
-.footer-bar .brand__mark svg path { fill: var(--coral); }
-.footer-bar .brand__name, .footer-bar .brand__name span { color: #fff; }
+.brand__logo--footer { height: 44px; }
 
 @media (max-width: 1000px) {
   .prose-grid { grid-template-columns: 1fr; }

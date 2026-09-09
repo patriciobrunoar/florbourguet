@@ -17,7 +17,11 @@ contacto.html               Contacto
 projects/*.html             18 fichas de proyecto (una por marca)
 css/style.css               Toda la hoja de estilos
 js/main.js                  Menú móvil, animación al scrollear y formulario
-img/                        Imágenes del sitio (falta cargarlas)
+img/                         Imágenes del sitio
+  logoFlor.svg                 Logo, versión coral (sidebar y fondos claros)
+  logoFlor-white.svg           Logo, versión blanca (barra coral del footer)
+  favicon.svg                  Ícono del logo, recortado para el favicon
+  IlustEdit.png                Ilustración del hero de la Home
 ```
 
 Cada ítem del menú es una página propia. La navegación, el footer y los
@@ -34,20 +38,21 @@ replicarlo en el resto.
 
 ## Qué falta completar
 
-1. **Imágenes.** Todos los espacios están marcados con un bloque gris
-   (`class="ph"`) y una etiqueta que dice qué va ahí. Reemplazá cada uno por
-   `<img src="img/archivo.jpg" alt="descripción">`.
-2. **Logo.** El isotipo es un SVG provisorio, está inline en cada página y en
-   `img/favicon.svg`.
-3. **Redes.** Los links de LinkedIn, Instagram, TikTok y WhatsApp están en `#`.
-4. **Email.** Figura `hola@florbourguet.com.ar` en `contacto.html`.
-5. **Formulario.** En `contacto.html`, reemplazá `TU_ID` en el `action` por el
+1. **Imágenes.** Ya están el logo y la ilustración del hero. El resto de los
+   espacios sigue marcado con un bloque gris (`class="ph"`) y una etiqueta que
+   dice qué va ahí. Reemplazá cada uno por `<img src="img/archivo.jpg"
+   alt="descripción">`: los 3 círculos de "¿Qué hago?", las 3 fotos de viaje,
+   los retratos de Quién soy / Asesoría / Clases y las imágenes de cada
+   proyecto del portfolio.
+2. **Redes.** Los links de LinkedIn, Instagram, TikTok y WhatsApp están en `#`.
+3. **Email.** Figura `hola@florbourguet.com.ar` en `contacto.html`.
+4. **Formulario.** En `contacto.html`, reemplazá `TU_ID` en el `action` por el
    ID de tu cuenta de [Formspree](https://formspree.io) (o el endpoint del
    servicio que uses). Mientras tanto el botón abre el programa de correo del
    visitante con el mensaje ya armado.
-6. **Blog.** `blog.html` está en "próximamente" y trae, comentada, la plantilla
+5. **Blog.** `blog.html` está en "próximamente" y trae, comentada, la plantilla
    de una nota para duplicar.
-7. **Logos de agencias.** Hoy son texto; si tenés los SVG, se pueden reemplazar.
+6. **Logos de agencias.** Hoy son texto; si tenés los SVG, se pueden reemplazar.
 
 ## Ver el sitio en local
 
