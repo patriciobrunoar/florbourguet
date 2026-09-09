@@ -253,7 +253,10 @@ body.nav-open .nav-toggle span::after { transform: translateY(-7px) rotate(-45de
 .pitch {
   position: relative;
   background: var(--coral);
-  padding: clamp(50px, 7vw, 92px) var(--gutter) clamp(130px, 19vw, 240px);
+  /* El padding inferior tiene que ser grande para dejar lugar a la diagonal
+     de .pitch::after (17vw); igualamos el superior para que el asterisco y
+     el texto queden centrados en el alto real de la banda coral. */
+  padding: clamp(130px, 19vw, 240px) var(--gutter);
   text-align: center;
 }
 .pitch__mark { display: block; margin: 0 auto 26px; width: 46px; height: 46px; }
