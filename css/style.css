@@ -306,14 +306,17 @@ body.nav-open .nav-toggle span::after { transform: translateY(-7px) rotate(-45de
 }
 .travel__text { max-width: 46ch; margin-bottom: 2em; }
 
-.polaroids { position: relative; display: grid; grid-template-columns: repeat(6, 1fr); }
+/* Collage de polaroids: cada foto se ubica con posición absoluta dentro de un
+   contenedor con aspect-ratio fijo, así el abanico escala sin recortarse. */
+.polaroids { position: relative; width: 100%; max-width: 460px; aspect-ratio: 5 / 6; margin: 0 auto; }
 .polaroid {
-  background: #fff; padding: 12px 12px 12px; box-shadow: 0 14px 34px rgba(0,0,0,.13);
+  position: absolute; width: 54%;
+  background: #fff; padding: 10px 10px 22px; box-shadow: 0 16px 34px rgba(0,0,0,.16);
 }
-.polaroid .ph { aspect-ratio: 3 / 4; }
-.polaroid:nth-child(1) { grid-column: 1 / span 3; grid-row: 1; transform: rotate(-2deg); z-index: 3; }
-.polaroid:nth-child(2) { grid-column: 3 / span 3; grid-row: 1; margin-top: 34%; transform: rotate(1.5deg); z-index: 2; }
-.polaroid:nth-child(3) { grid-column: 4 / span 3; grid-row: 1; margin-top: 78%; transform: rotate(-1deg); z-index: 4; }
+.polaroid .ph { aspect-ratio: 3 / 4; width: 100%; }
+.polaroid:nth-child(1) { left: 0; top: 0; transform: rotate(-7deg); z-index: 2; }
+.polaroid:nth-child(2) { left: 25%; top: 21%; transform: rotate(4deg); z-index: 1; }
+.polaroid:nth-child(3) { left: 46%; top: 42%; transform: rotate(-4deg); z-index: 3; }
 
 /* --------------------------------------------------------------- Escribo -- */
 .write { text-align: center; }
@@ -540,9 +543,6 @@ body.nav-open .nav-toggle span::after { transform: translateY(-7px) rotate(-45de
   .cols-2 { columns: 1; }
   .brand-list { columns: 1; }
   .form { grid-template-columns: 1fr; }
-  .polaroid:nth-child(2), .polaroid:nth-child(3) { margin-top: 0; }
-  .polaroids { grid-template-columns: 1fr; gap: 16px; }
-  .polaroid:nth-child(n) { grid-column: 1; grid-row: auto; transform: none; }
 }
 
 /* ==========================================================================
