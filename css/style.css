@@ -636,7 +636,9 @@ body.nav-open .nav-toggle span::after { transform: translateY(-7px) rotate(-45de
 }
 .footer-contact__coral {
   position: absolute; inset: 0; background: var(--coral); z-index: 0;
-  clip-path: polygon(0 100%, 100% 58%, 100% 100%, 0 100%);
+  /* Comparte el borde diagonal con .footer-contact__teal (0 98%, 100% 78%) para
+     que no quede una franja del fondo crema asomando entre las dos bandas. */
+  clip-path: polygon(0 98%, 100% 78%, 100% 100%, 0 100%);
 }
 .footer-contact__teal {
   position: absolute; inset: 0; background: var(--teal); z-index: 1;
