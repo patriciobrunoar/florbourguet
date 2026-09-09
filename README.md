@@ -45,14 +45,54 @@ replicarlo en el resto.
    los retratos de Quién soy / Asesoría / Clases y las imágenes de cada
    proyecto del portfolio.
 2. **Redes.** Los links de LinkedIn, Instagram, TikTok y WhatsApp están en `#`.
-3. **Email.** Figura `hola@florbourguet.com.ar` en `contacto.html`.
+3. **Email.** En `contacto.html`, el atributo `data-fallback-email` del
+   formulario tiene el placeholder `TU_EMAIL@florbourguet.com.ar` — reemplazalo
+   por tu dirección real (se usa para armar el link `mailto:` mientras no haya
+   un backend real conectado).
 4. **Formulario.** En `contacto.html`, reemplazá `TU_ID` en el `action` por el
    ID de tu cuenta de [Formspree](https://formspree.io) (o el endpoint del
    servicio que uses). Mientras tanto el botón abre el programa de correo del
    visitante con el mensaje ya armado.
-5. **Blog.** `blog.html` está en "próximamente" y trae, comentada, la plantilla
-   de una nota para duplicar.
-6. **Logos de agencias.** Hoy son texto; si tenés los SVG, se pueden reemplazar.
+5. **Blog.** `blog.html` sólo tiene el hero (con la única frase del texto que
+   habla de escribir) y, comentada, la plantilla de una nota para duplicar
+   cuando haya posts. No agregué ninguna bajada ni mensaje de "próximamente"
+   porque no estaba en tus textos — si querés un texto ahí, decime qué poner.
+6. **Logos de agencias.** "GREY group, DDB, FCB&FiRe, JOY, McCANN, Wunderman
+   Thompson, Ogilvy" están como texto plano. Ese listado no está en el PDF que
+   compartiste: lo tomé de las capturas de referencia del diseño que me
+   pasaste al principio. Si son las agencias correctas, decime y les paso los
+   logos reales cuando me los mandes; si no, decime cuáles sacar.
+
+## Textos: qué es 100% tuyo y qué tuve que inventar para que el sitio funcione
+
+Todo el copy narrativo (los párrafos de Quién soy, Portfolio, Asesoría,
+Clases, Modo viajera y las 18 fichas de marca) es tu texto tal cual, palabra
+por palabra. Un sitio de varias páginas necesita además títulos de sección,
+textos de botón y demás — ahí donde tu documento no daba una frase para
+usar, elegí entre tres opciones, en este orden: (a) una frase corta ya
+presente en el propio documento y que aplicaba al contexto, (b) tus propias
+instrucciones en el chat (los nombres del menú, "coming soon"), o (c) texto
+mínimo mío, siempre señalado acá:
+
+- **Texto mío, no de tus documentos:** dentro de `data-fallback-email`
+  (placeholder, no se ve en la página) y las etiquetas de los campos del
+  formulario (Nombre / Email / Asunto / Mensaje), que son necesarias para que
+  el formulario funcione.
+- **Texto de las capturas de referencia que me mandaste, no del PDF/DOCX:**
+  los nombres de las agencias ("GREY group", "DDB"...) y los títulos
+  "Mis comienzos" / "Mi mientras tanto" / "Mi hoy" en `quien-soy.html`
+  (los tomé de las capturas que me mostraste del diseño de esa página).
+- **Dos correcciones menores a erratas del PDF:** en el proyecto Coca-Cola
+  arreglé un espacio de más antes de una coma (artefacto de la extracción
+  del PDF en dos columnas), y en "Hablemos de fútbol" corregí "como en en
+  los debates" (palabra duplicada) a "como en los debates". En ambos casos
+  mantuve las palabras, sólo até ese detalle de tipeo. Si preferís que quede
+  calcado incluso con esos detalles, decime y lo revierto.
+
+Todo lo demás (encabezados de sección como "Agencias y marcas", "Marca
+personales", "Clases y charlas", los títulos de las 3 tarjetas de "¿Qué
+hago?", el título "Contacto") usa palabras que están literalmente en tu PDF,
+reubicadas donde hacen falta como encabezado.
 
 ## Ver el sitio en local
 
