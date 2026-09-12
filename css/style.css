@@ -444,10 +444,8 @@ span.page-hero__badge {
   display: flex; flex-wrap: wrap; justify-content: center;
   gap: clamp(20px, 3.2vw, 46px); align-items: center;
 }
-.agencies li {
-  list-style: none; font-weight: 600; font-size: clamp(.95rem, 1.6vw, 1.15rem);
-  letter-spacing: -.01em; color: #201b19; opacity: .82;
-}
+.agencies li { list-style: none; display: flex; align-items: center; opacity: .85; }
+.agencies img { height: clamp(24px, 2.6vw, 36px); width: auto; display: block; }
 
 .brand-list { columns: 3; column-gap: 40px; list-style: none; margin: 0; padding: 0; font-size: .95rem; }
 .brand-list li { padding: 5px 0; border-bottom: 1px solid var(--line); break-inside: avoid; color: #3a3533; }
