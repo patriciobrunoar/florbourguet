@@ -400,23 +400,40 @@ body.nav-open .nav-toggle span::after { transform: translateY(-7px) rotate(-45de
   .post-badge { font-size: 1.15rem; padding: 12px 22px 20px; }
 }
 
-/* ------------------------------------------------------------- Proyectos -- */
-.projects { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(24px, 3vw, 40px); }
-.project-card {
-  display: flex; flex-direction: column; background: var(--white);
-  box-shadow: 0 2px 0 rgba(20,16,15,.04);
-  transition: transform .3s var(--ease), box-shadow .3s var(--ease);
+/* ------------------------------------------------------------- Proyectos --
+   Índice simplificado: imagen → hover → aparece el nombre → click → abre
+   el caso. Sin nombre ni bajada visibles de entrada (ver criterio del
+   cliente para "Trabajo con marcas"). En touch, donde no hay hover, el
+   nombre queda visible directamente (ver media query más abajo). */
+.projects { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(20px, 2.8vw, 36px); }
+.project-card__link {
+  position: relative; display: block; overflow: hidden; border-radius: var(--radius);
 }
-.project-card:hover { transform: translateY(-5px); box-shadow: 0 18px 40px rgba(20,16,15,.1); }
-.project-card .ph { aspect-ratio: 4 / 3; }
-.project-card__body { padding: 26px 28px 30px; display: flex; flex-direction: column; flex: 1; }
-.project-card__name { font-family: var(--font-display); font-style: italic; font-size: 1.55rem; margin-bottom: .3em; }
-.project-card__kicker {
-  font-size: .64rem; letter-spacing: .22em; text-transform: uppercase;
-  color: var(--muted); font-weight: 600; margin-bottom: 1em;
+.project-card__link .ph { aspect-ratio: 4 / 3; transition: transform .5s var(--ease); }
+.project-card__link:hover .ph,
+.project-card__link:focus-visible .ph { transform: scale(1.05); }
+.project-card__link::after {
+  content: ""; position: absolute; inset: 0; background: var(--coral);
+  opacity: 0; transition: opacity .3s var(--ease);
 }
-.project-card p { font-size: .93rem; color: #3a3533; }
-.project-card .link-arrow { margin-top: auto; padding-top: 1.4em; }
+.project-card:nth-child(even) .project-card__link::after { background: var(--teal); }
+.project-card__link:hover::after,
+.project-card__link:focus-visible::after { opacity: .92; }
+.project-card__name {
+  position: absolute; inset: 0; z-index: 1; display: grid; place-items: center;
+  padding: 20px; text-align: center; pointer-events: none;
+  font-family: var(--font-display); font-style: italic; font-weight: 500;
+  font-size: clamp(1.1rem, 1.9vw, 1.5rem); color: #fff;
+  opacity: 0; transition: opacity .3s var(--ease);
+}
+.project-card:nth-child(even) .project-card__name { color: var(--ink); }
+.project-card__link:hover .project-card__name,
+.project-card__link:focus-visible .project-card__name { opacity: 1; }
+
+@media (max-width: 640px) {
+  .project-card__link::after { opacity: .5; }
+  .project-card__name { opacity: 1; }
+}
 
 /* Detalle de proyecto -- reusa el sistema .page-hero (misma cabecera que el
    resto de las páginas internas) más una variante con foto y el logo de la
