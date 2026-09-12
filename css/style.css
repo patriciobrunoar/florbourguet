@@ -260,7 +260,7 @@ body.nav-open .nav-toggle span::after { transform: translateY(-7px) rotate(-45de
      de esta sección, así que un padding-top grande corría el texto hacia
      abajo y lo hacía ver menos centrado (y, en pantallas muy anchas, lo
      empujaba hasta pisar la diagonal). */
-  padding: clamp(60px, 8vw, 110px) var(--gutter) clamp(130px, 19vw, 240px);
+  padding: clamp(56px, 7vw, 90px) var(--gutter) clamp(84px, 11vw, 140px);
   text-align: center;
 }
 .pitch__mark { display: block; margin: 0 auto 26px; width: 46px; height: 46px; }
@@ -270,7 +270,7 @@ body.nav-open .nav-toggle span::after { transform: translateY(-7px) rotate(-45de
   content: ""; position: absolute; left: 0; right: 0; bottom: -1px;
   /* Mismo clamp que el padding-bottom: si el recorte fuera más alto que el
      padding, la diagonal se comería parte del texto en pantallas anchas. */
-  height: clamp(130px, 19vw, 240px);
+  height: clamp(84px, 11vw, 140px);
   background: var(--bg); clip-path: polygon(0 62%, 100% 0, 100% 100%, 0 100%);
 }
 
