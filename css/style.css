@@ -452,6 +452,21 @@ body.nav-open .nav-toggle span::after { transform: translateY(-7px) rotate(-45de
 .version__claim { font-size: .82rem; font-weight: 600; letter-spacing: .04em; color: var(--coral); margin-bottom: 1em; }
 .version p { font-size: .94rem; color: #3a3533; }
 
+/* --------------------------------------------------------- Grid de gente -- */
+.people-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: clamp(28px, 4vw, 46px);
+}
+.person__photo { width: 100%; aspect-ratio: 1; margin-bottom: 20px; }
+.person__name {
+  font-family: var(--font-display); font-style: italic; font-weight: 500;
+  font-size: 1.32rem; margin-bottom: .15em;
+}
+.person__role { font-size: .9rem; color: #3a3533; margin-bottom: 1.1em; }
+.socials--person a { width: 30px; height: 30px; background: var(--coral); }
+.socials--person a:hover { background: var(--ink); }
+.socials--person svg { width: 13px; height: 13px; }
+
 /* Cita destacada */
 .pullquote {
   font-family: var(--font-display); font-style: italic;
@@ -569,6 +584,11 @@ body.nav-open .nav-toggle span::after { transform: translateY(-7px) rotate(-45de
 }
 .page-hero--coral .page-hero__band { background: var(--coral); }
 .page-hero--teal .page-hero__band { background: var(--teal); }
+/* Variante con foto real pendiente: el "band" pasa a ser un marcador .ph
+   (mismo criterio que el resto del sitio) en vez de un color sólido, así
+   que el título necesita tinta oscura en las dos líneas para leerse. */
+.page-hero--photo .page-hero__title,
+.page-hero--photo .page-hero__title em { color: var(--ink); }
 
 .page-hero .wrap { max-width: 1120px; }
 
