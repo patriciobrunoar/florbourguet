@@ -351,6 +351,55 @@ body.nav-open .nav-toggle span::after { transform: translateY(-7px) rotate(-45de
 .post__meta { font-size: .78rem; color: var(--muted); letter-spacing: .04em; margin-bottom: 1.1em; }
 .post p { font-size: .95rem; }
 
+/* --------------------------------------------------- Nota completa (feed) -- */
+.feed { display: flex; flex-direction: column; }
+.post-full {
+  padding-bottom: clamp(56px, 8vw, 96px); margin-bottom: clamp(56px, 8vw, 96px);
+  border-bottom: 1px solid var(--line);
+}
+.post-full:last-child { border-bottom: 0; margin-bottom: 0; }
+
+.post-full__header { position: relative; padding-top: 6px; }
+.post-badge {
+  position: absolute; top: -6px; right: -6px;
+  background: var(--coral); color: #fff;
+  font-family: var(--font-display); font-style: italic; font-weight: 500;
+  font-size: 1.5rem; line-height: 1; padding: 16px 30px 26px;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 80%, 0 100%);
+}
+.post-full__title {
+  font-family: var(--font-display); font-style: italic; font-weight: 500;
+  font-size: clamp(2rem, 5vw, 3.4rem); line-height: 1.06; max-width: 18ch;
+  margin: 30px 0 .35em;
+}
+.post-full__meta {
+  font-family: var(--font-display); font-style: italic; color: #7a716b;
+  font-size: .98rem; margin: 0 0 2em;
+}
+.post-full__cover { aspect-ratio: 16 / 9.5; margin-bottom: 2.6em; }
+
+.post-full__body::after { content: ""; display: table; clear: both; }
+.post-full__body .quote-block { margin: 1.6em 0; }
+
+.post-full__figure {
+  float: right; width: 40%; margin: .3em 0 24px 30px;
+}
+.post-full__figure .ph { aspect-ratio: 3 / 4; }
+.post-full__figure figcaption {
+  font-family: var(--font-display); font-style: italic; color: var(--coral);
+  font-size: .85rem; margin-top: 10px; text-align: right;
+}
+
+.feed-end {
+  text-align: center; color: var(--muted); font-size: .78rem;
+  letter-spacing: .18em; text-transform: uppercase; padding-top: 6px;
+}
+
+@media (max-width: 640px) {
+  .post-full__figure { float: none; width: 100%; margin: 0 0 20px; }
+  .post-badge { font-size: 1.15rem; padding: 12px 22px 20px; }
+}
+
 /* ------------------------------------------------------------- Proyectos -- */
 .projects { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(24px, 3vw, 40px); }
 .project-card {
