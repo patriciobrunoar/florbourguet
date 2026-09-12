@@ -222,15 +222,14 @@ body.nav-open .nav-toggle span::after { transform: translateY(-7px) rotate(-45de
 /* ------------------------------------------------------------------ Hero -- */
 .hero {
   position: relative;
-  min-height: min(100vh, 860px);
   display: flex;
-  align-items: flex-start;
-  padding: clamp(56px, 8vh, 104px) var(--gutter) clamp(70px, 8vw, 110px);
+  align-items: center;
+  padding: clamp(56px, 8vh, 104px) var(--gutter) clamp(64px, 7vw, 100px);
   overflow: hidden;
 }
 .hero__band {
   position: absolute; inset: 0; background: var(--coral); z-index: 0;
-  clip-path: polygon(0 87%, 100% 47%, 100% 100%, 0 100%);
+  clip-path: polygon(0 96%, 100% 47%, 100% 100%, 0 100%);
 }
 .hero__grid {
   position: relative; z-index: 2;
@@ -260,7 +259,7 @@ body.nav-open .nav-toggle span::after { transform: translateY(-7px) rotate(-45de
      de esta sección, así que un padding-top grande corría el texto hacia
      abajo y lo hacía ver menos centrado (y, en pantallas muy anchas, lo
      empujaba hasta pisar la diagonal). */
-  padding: clamp(56px, 7vw, 90px) var(--gutter) clamp(84px, 11vw, 140px);
+  padding: clamp(36px, 4vw, 60px) var(--gutter) clamp(84px, 11vw, 140px);
   text-align: center;
 }
 .pitch__mark { display: block; margin: 0 auto 26px; width: 46px; height: 46px; }
