@@ -3,17 +3,26 @@
 Sitio estático (HTML + CSS + JS, sin build ni dependencias) para Flor Bourguet.
 Se puede publicar tal cual en cualquier hosting: subís la carpeta y listo.
 
-## Estructura
+## Arquitectura del sitio
+
+La botonera tiene ocho botones. Los nombres visibles son los de la
+arquitectura que pasó Flor; el archivo y el nombre funcional ("equivale a")
+quedan por detrás, en la URL y en el `<title>`.
+
+| Botón visible | Equivale a | Archivo | Tipo de página | Función |
+| --- | --- | --- | --- | --- |
+| Hola | Home | `index.html` | One-page | Presentar y dar acceso a los distintos universos del sitio |
+| Soy Flor | About / Quién soy | `quien-soy.html` | Página | Presentación y recorrido personal/profesional |
+| Trabajo con marcas | Portfolio | `portfolio.html` | Índice + casos | Mostrar proyectos realizados para marcas |
+| Marcas personales | Asesorías | `asesoria-influencers.html` | Página | Presentar el trabajo de acompañamiento a marcas personales |
+| Doy clases | Clases | `clases.html` | Página | Presentar experiencia docente |
+| Viajo | Viajes | `modo-viajera.html` | Página | Contar el proyecto/recorrido viajero |
+| Escribo | Blog | `blog.html` | Índice + posts | Acceso a artículos |
+| Escribime | Contacto | `contacto.html` | Form | Contacto |
+
+El resto de los archivos:
 
 ```
-index.html                  Home
-quien-soy.html              Quién soy (about)
-portfolio.html              Portfolio · listado de proyectos
-asesoria-influencers.html   Asesoría influencers / marcas personales
-clases.html                 Clases y charlas
-modo-viajera.html           Modo viajera (coming soon)
-blog.html                   Blog
-contacto.html               Contacto
 projects/*.html             18 fichas de proyecto (una por marca)
 css/style.css               Toda la hoja de estilos
 js/main.js                  Menú móvil, animación al scrollear y formulario
@@ -27,6 +36,30 @@ img/                         Imágenes del sitio
 Cada ítem del menú es una página propia. La navegación, el footer y los
 metadatos viven repetidos en cada archivo: si cambiás uno, acordate de
 replicarlo en el resto.
+
+### Decisiones al adaptar la arquitectura
+
+- **Los nombres de archivo no cambiaron.** La arquitectura define los nombres
+  *visibles* ("son los que deberían aparecer en la botonera"), así que cambié
+  la botonera y dejé las URLs como estaban: `portfolio.html` sigue siendo
+  `portfolio.html`. Si querés que las URLs también hablen en primera persona
+  (`/viajo`, `/escribime`), se puede hacer, pero conviene decidirlo antes de
+  publicar el sitio o dejar redirecciones.
+- **El `<title>` lleva los dos nombres** (`Trabajo con marcas · Portfolio ·
+  Flor Bourguet`): el visible para la identidad y el funcional porque es el
+  que la gente busca en Google. Es el mismo formato que ya usaban las fichas
+  de proyecto (`Nutella · Portfolio · Flor Bourguet`).
+- **Los H1 de Blog y Contacto pasaron a "Escribo" y "Escribime"**, que eran
+  los dos títulos genéricos que quedaban. El resto de los H1 son frases tuyas
+  ("Agencias y marcas", "Marcas personales con impacto", "Clases y charlas",
+  "Modo viajera") y dicen más que el botón, así que los dejé.
+- **"Viajo" mantiene el cartel de "coming soon"** en la botonera. La
+  arquitectura lo lista como página normal; el cartel está porque la página
+  todavía no está terminada. Cuando la publiques, se saca el
+  `<span class="nav__badge">` de los 26 archivos.
+- **La Home ahora da acceso a los ocho universos.** Faltaba el único que no
+  tenía entrada: agregué el botón "Conoceme" abajo del párrafo de
+  presentación, que lleva a Soy Flor.
 
 ## Diseño
 
@@ -73,6 +106,14 @@ usar, elegí entre tres opciones, en este orden: (a) una frase corta ya
 presente en el propio documento y que aplicaba al contexto, (b) tus propias
 instrucciones en el chat (los nombres del menú, "coming soon"), o (c) texto
 mínimo mío, siempre señalado acá:
+
+- **Los ocho nombres de la botonera** ("Hola", "Soy Flor", "Trabajo con
+  marcas", "Marcas personales", "Doy clases", "Viajo", "Escribo",
+  "Escribime") salen tal cual del documento de arquitectura del sitio que
+  compartiste. De ahí también salen los H1 "Escribo" (Blog) y "Escribime"
+  (Contacto).
+- **El botón "Conoceme"** de la Home es tu propia palabra, reusada: sale del
+  H1 de `quien-soy.html`, "Soy Flor, conoceme…".
 
 - **Texto mío, no de tus documentos:** dentro de `data-fallback-email`
   (placeholder, no se ve en la página) y las etiquetas de los campos del

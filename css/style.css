@@ -265,6 +265,7 @@ body.nav-open .nav-toggle span::after { transform: translateY(-7px) rotate(-45de
 }
 .pitch__mark { display: block; margin: 0 auto 26px; width: 46px; height: 46px; }
 .pitch p { max-width: 60ch; margin: 0 auto; font-size: 1.06rem; }
+.pitch__cta { margin-top: 2.2em; }
 .pitch::after {
   content: ""; position: absolute; left: 0; right: 0; bottom: -1px;
   /* Mismo clamp que el padding-bottom: si el recorte fuera más alto que el
