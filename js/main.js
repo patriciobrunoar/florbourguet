@@ -79,4 +79,61 @@
       }
     });
   }
+
+  /* --------------------------------------------- Feed infinito (blog.html) */
+  /* Mientras no haya notas reales conectadas a un backend, esto simula el
+     scroll infinito clonando la plantilla #post-template (Lorem ipsum) a
+     medida que el visitante se acerca al final del feed. El día que haya
+     posts de verdad, esta plantilla se reemplaza por datos reales y el
+     mecanismo de scroll queda igual. */
+  var feed = document.getElementById("feed");
+  var feedTemplate = document.getElementById("post-template");
+  var feedEnd = document.getElementById("feed-end");
+
+  if (feed && feedTemplate && feedEnd) {
+    var EXTRA_POSTS = 2; // cuántas notas de más simular antes de avisar que no hay más
+    var loaded = 0;
+    var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    var revealClone = function (article) {
+      if (reduceMotion) return;
+      article.classList.add("reveal");
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          article.classList.add("is-visible");
+        });
+      });
+    };
+
+    var loadNext = function () {
+      var clone = feedTemplate.content.cloneNode(true);
+      var article = clone.querySelector(".post-full");
+      if (article) {
+        revealClone(article);
+        feed.appendChild(clone);
+      }
+      loaded++;
+      if (loaded >= EXTRA_POSTS) {
+        if (sentinelObserver) sentinelObserver.disconnect();
+        sentinel.remove();
+        feedEnd.hidden = false;
+      }
+    };
+
+    var sentinel = document.createElement("div");
+    sentinel.setAttribute("aria-hidden", "true");
+    feed.insertAdjacentElement("afterend", sentinel);
+
+    var sentinelObserver;
+    if ("IntersectionObserver" in window) {
+      sentinelObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) loadNext();
+        });
+      }, { rootMargin: "600px 0px 0px 0px" });
+      sentinelObserver.observe(sentinel);
+    } else {
+      while (loaded < EXTRA_POSTS) loadNext();
+    }
+  }
 })();
