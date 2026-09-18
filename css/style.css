@@ -258,22 +258,21 @@ body.nav-open .nav-toggle span::after { transform: translateY(-7px) rotate(-45de
 .pitch {
   position: relative;
   background: var(--coral);
-  /* padding-bottom deja lugar a la diagonal de .pitch::after, que ahora
-     cubre todo el alto de la sección (como .hero__band) para poder tener
-     la misma pendiente que la diagonal del hero -- si el recorte fuera más
-     alto que el padding, se comería parte del texto. padding-top se
-     mantiene chico a propósito: la banda coral del hero (.hero__band) ya
-     aporta bastante coral arriba de esta sección, así que un padding-top
-     grande corría el texto hacia abajo y lo hacía ver menos centrado (y,
-     en pantallas muy anchas, lo empujaba hasta pisar la diagonal). */
-  padding: clamp(36px, 4vw, 60px) var(--gutter) clamp(140px, 20vw, 280px);
+  /* padding-top y padding-bottom quedan parecidos a propósito, para que el
+     texto se vea centrado dentro de la franja coral en vez de pegado
+     arriba. El recorte de .pitch::after vive en su propia tira, con una
+     altura independiente del padding-top, así el ángulo de esa diagonal
+     (pensado para calzar con la del hero) no cambia si se ajusta el
+     centrado del texto. */
+  padding: clamp(90px, 12vw, 200px) var(--gutter) clamp(190px, 17vw, 340px);
   text-align: center;
 }
 .pitch__mark { display: block; margin: 0 auto 26px; width: 46px; height: 46px; }
 .pitch p { max-width: 60ch; margin: 0 auto; font-size: 1.06rem; }
 .pitch::after {
-  content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: -2px;
-  background: var(--bg); clip-path: polygon(0 100%, 100% 44%, 100% 100%);
+  content: ""; position: absolute; left: 0; right: 0; bottom: -2px;
+  height: clamp(190px, 17vw, 340px);
+  background: var(--bg); clip-path: polygon(100% 0, 100% 100%, 0 100%);
 }
 
 /* --------------------------------------------------------------- Pilares -- */
@@ -552,7 +551,6 @@ span.page-hero__badge {
   .hero { min-height: auto; }
   .hero__grid { grid-template-columns: 1fr; }
   .hero__band { clip-path: polygon(0 88%, 100% 74%, 100% 100%, 0 100%); }
-  .pitch::after { clip-path: polygon(0 112%, 100% 82%, 100% 100%, 0 100%); }
   .travel__grid { grid-template-columns: 1fr; }
   .travel__band { clip-path: polygon(0 14%, 100% 4%, 100% 88%, 0 98%); }
   .pillars, .projects, .grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
