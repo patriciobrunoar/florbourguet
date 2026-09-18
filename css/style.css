@@ -175,6 +175,8 @@ strong, b { font-weight: 600; }
 .socials a:hover { background: var(--coral); transform: translateY(-2px); }
 .socials svg { width: 15px; height: 15px; fill: #fff; }
 
+.footer-email { font-size: .78rem; color: var(--ink); text-decoration: none; }
+.footer-email:hover { color: var(--coral); text-decoration: underline; }
 .colophon { font-size: .72rem; line-height: 1.6; color: var(--muted); }
 
 /* Botón hamburguesa (sólo móvil) */
