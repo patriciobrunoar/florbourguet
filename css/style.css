@@ -675,7 +675,6 @@ span.page-hero__badge {
 .page-hero__note p { margin: 0; font-size: 1.02rem; line-height: 1.6; }
 
 .asterisk { width: clamp(40px, 5vw, 62px); height: auto; flex: 0 0 auto; fill: var(--ink); }
-.pitch__mark { fill: #fff; }
 
 /* ==========================================================================
    Texto largo a dos columnas con aparte
