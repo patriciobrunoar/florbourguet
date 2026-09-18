@@ -5,7 +5,7 @@ Se puede publicar tal cual en cualquier hosting: subís la carpeta y listo.
 
 ## Arquitectura del sitio
 
-La botonera tiene ocho botones. Los nombres visibles son los de la
+La botonera tiene siete botones. Los nombres visibles son los de la
 arquitectura que pasó Flor; el archivo y el nombre funcional ("equivale a")
 quedan por detrás, en la URL y en el `<title>`.
 
@@ -17,7 +17,6 @@ quedan por detrás, en la URL y en el `<title>`.
 | Marcas personales | Asesorías | `asesoria-influencers.html` | Página | Presentar el trabajo de acompañamiento a marcas personales |
 | Doy clases | Clases | `clases.html` | Página | Presentar experiencia docente |
 | Viajo | Viajes | `modo-viajera.html` | Página | Contar el proyecto/recorrido viajero |
-| Escribo | Blog | `blog.html` | Índice + posts | Acceso a artículos |
 | Escribime | Contacto | `contacto.html` | Form | Contacto |
 
 El resto de los archivos:
@@ -49,17 +48,16 @@ replicarlo en el resto.
   Flor Bourguet`): el visible para la identidad y el funcional porque es el
   que la gente busca en Google. Es el mismo formato que ya usaban las fichas
   de proyecto (`Nutella · Portfolio · Flor Bourguet`).
-- **Los H1 de Blog y Contacto pasaron a "Escribo" y "Escribime"**, que eran
-  los dos títulos genéricos que quedaban. El resto de los H1 son frases tuyas
-  ("Agencias y marcas", "Marcas personales con impacto", "Clases y charlas",
-  "Modo viajera") y dicen más que el botón, así que los dejé.
+- **El H1 de Contacto pasó a "Escribime"**, que era el título genérico que
+  quedaba. El resto de los H1 son frases tuyas ("Agencias y marcas", "Marcas
+  personales con impacto", "Clases y charlas", "Modo viajera") y dicen más
+  que el botón, así que los dejé.
 - **"Viajo" mantiene el cartel de "coming soon"** en la botonera. La
   arquitectura lo lista como página normal; el cartel está porque la página
   todavía no está terminada. Cuando la publiques, se saca el
-  `<span class="nav__badge">` de los 26 archivos.
-- **La Home ahora da acceso a los ocho universos.** Faltaba el único que no
-  tenía entrada: agregué el botón "Conoceme" abajo del párrafo de
-  presentación, que lleva a Soy Flor.
+  `<span class="nav__badge">` de los 25 archivos.
+- **Se sacó "Escribo" (Blog) de la botonera** a pedido: la sección y
+  `blog.html` ya no existen.
 
 ## Diseño
 
@@ -86,11 +84,7 @@ replicarlo en el resto.
    ID de tu cuenta de [Formspree](https://formspree.io) (o el endpoint del
    servicio que uses). Mientras tanto el botón abre el programa de correo del
    visitante con el mensaje ya armado.
-5. **Blog.** `blog.html` sólo tiene el hero (con la única frase del texto que
-   habla de escribir) y, comentada, la plantilla de una nota para duplicar
-   cuando haya posts. No agregué ninguna bajada ni mensaje de "próximamente"
-   porque no estaba en tus textos — si querés un texto ahí, decime qué poner.
-6. **Logos de agencias.** "GREY group, DDB, FCB&FiRe, JOY, McCANN, Wunderman
+5. **Logos de agencias.** "GREY group, DDB, FCB&FiRe, JOY, McCANN, Wunderman
    Thompson, Ogilvy" están como texto plano. Ese listado no está en el PDF que
    compartiste: lo tomé de las capturas de referencia del diseño que me
    pasaste al principio. Si son las agencias correctas, decime y les paso los
@@ -107,13 +101,10 @@ presente en el propio documento y que aplicaba al contexto, (b) tus propias
 instrucciones en el chat (los nombres del menú, "coming soon"), o (c) texto
 mínimo mío, siempre señalado acá:
 
-- **Los ocho nombres de la botonera** ("Hola", "Soy Flor", "Trabajo con
-  marcas", "Marcas personales", "Doy clases", "Viajo", "Escribo",
-  "Escribime") salen tal cual del documento de arquitectura del sitio que
-  compartiste. De ahí también salen los H1 "Escribo" (Blog) y "Escribime"
-  (Contacto).
-- **El botón "Conoceme"** de la Home es tu propia palabra, reusada: sale del
-  H1 de `quien-soy.html`, "Soy Flor, conoceme…".
+- **Los siete nombres de la botonera** ("Hola", "Soy Flor", "Trabajo con
+  marcas", "Marcas personales", "Doy clases", "Viajo", "Escribime") salen tal
+  cual del documento de arquitectura del sitio que compartiste. De ahí
+  también sale el H1 "Escribime" (Contacto).
 
 - **Texto mío, no de tus documentos:** dentro de `data-fallback-email`
   (placeholder, no se ve en la página) y las etiquetas de los campos del
