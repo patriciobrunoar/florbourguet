@@ -30,7 +30,7 @@ img/                         Imágenes del sitio
   logoFlor.svg                 Logo, versión coral (sidebar y fondos claros)
   logoFlor-white.svg           Logo, versión blanca (barra coral del footer)
   favicon.svg                  Ícono del logo, recortado para el favicon
-  IlustEdit.png                Ilustración del hero de la Home
+  florIlustracion.png          Ilustración del hero de la Home
 ```
 
 Cada ítem del menú es una página propia. La navegación, el footer y los
