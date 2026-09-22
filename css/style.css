@@ -332,7 +332,7 @@ body.nav-open .nav-toggle span::after { transform: translateY(-7px) rotate(-45de
   position: absolute; width: 54%;
   background: #fff; padding: 10px 10px 22px; box-shadow: 0 16px 34px rgba(0,0,0,.16);
 }
-.polaroid .ph { aspect-ratio: 3 / 4; width: 100%; }
+.polaroid .ph { aspect-ratio: 3 / 4; width: 100%; height: auto; object-fit: cover; }
 .polaroid:nth-child(1) { left: 0; top: 0; transform: rotate(-7deg); z-index: 2; }
 .polaroid:nth-child(2) { left: 25%; top: 21%; transform: rotate(4deg); z-index: 1; }
 .polaroid:nth-child(3) { left: 46%; top: 42%; transform: rotate(-4deg); z-index: 3; }
