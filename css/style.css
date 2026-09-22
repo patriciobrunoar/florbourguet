@@ -254,6 +254,7 @@ body.nav-open .nav-toggle span::after { transform: translateY(-7px) rotate(-45de
   line-height: .98; margin: 0 0 .55em; letter-spacing: -.02em;
 }
 .hero__title em { font-style: italic; color: var(--coral); display: block; }
+.hero__title-line { white-space: nowrap; }
 .hero__text { max-width: 42ch; margin-bottom: 1.9em; }
 
 .hero__figure { position: relative; }
