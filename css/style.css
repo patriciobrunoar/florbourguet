@@ -329,22 +329,23 @@ body.nav-open .nav-toggle span::after { transform: translateY(-7px) rotate(-45de
    contenedor con aspect-ratio fijo, así el abanico escala sin recortarse. */
 .polaroids { position: relative; width: 100%; max-width: 460px; aspect-ratio: 5 / 6; margin: 0 auto; }
 .polaroid {
-  position: absolute; width: 42%;
+  position: absolute; width: 38%;
   background: #fff; padding: 10px 10px 22px; box-shadow: 0 16px 34px rgba(0,0,0,.16);
 }
 .polaroid .ph { aspect-ratio: 3 / 4; width: 100%; height: auto; object-fit: cover; }
 /* z-index ascendente (1,2,3) para que cada foto tape sólo un borde de la
    anterior, en vez de que la del medio quede escondida entre las otras
-   dos (pasaba antes, con la del medio en el z-index más bajo). Fotos más
-   angostas (42% en vez de 50%) para poder repartirlas a lo ancho del
-   contenedor (0%, 29%, 58% + 42% de ancho = calzan justo con el borde
-   derecho) sin que el offset vertical tenga que ser tan grande: con
-   58%/36% la última foto termina bien arriba del borde inferior del
-   contenedor, así que no se superpone con el título de abajo en mobile
-   (donde .travel__grid pasa a una sola columna). */
+   dos (pasaba antes, con la del medio en el z-index más bajo). Ojo con
+   dejar margen real hasta el 100%/0% del contenedor y no sólo hasta ahí:
+   la rotación agranda el bounding box de cada foto, así que un left+width
+   que "calza justo" en el 100% sin rotar termina, ya rotado, pasándose
+   del borde -- en mobile (el contenedor pasa a ocupar casi todo el ancho
+   de pantalla) eso se traducía en la tercera foto recortada por el
+   overflow:hidden de .travel. Con 38% de ancho y offsets hasta 50%/38%
+   queda margen de sobra en los dos bordes aun con la rotación. */
 .polaroid:nth-child(1) { left: 0; top: 0; transform: rotate(-8deg); z-index: 1; }
-.polaroid:nth-child(2) { left: 29%; top: 18%; transform: rotate(5deg); z-index: 2; }
-.polaroid:nth-child(3) { left: 58%; top: 36%; transform: rotate(-3deg); z-index: 3; }
+.polaroid:nth-child(2) { left: 25%; top: 16%; transform: rotate(5deg); z-index: 2; }
+.polaroid:nth-child(3) { left: 50%; top: 32%; transform: rotate(-3deg); z-index: 3; }
 
 /* ------------------------------------------------------------- Proyectos --
    Índice simplificado: imagen → hover → aparece el nombre → click → abre
