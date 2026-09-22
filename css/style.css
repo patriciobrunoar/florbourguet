@@ -175,6 +175,8 @@ strong, b { font-weight: 600; }
 .socials a:hover { background: var(--coral); transform: translateY(-2px); }
 .socials svg { width: 15px; height: 15px; fill: #fff; }
 
+.footer-email { font-size: .78rem; color: var(--ink); text-decoration: none; }
+.footer-email:hover { color: var(--coral); text-decoration: underline; }
 .colophon { font-size: .72rem; line-height: 1.6; color: var(--muted); }
 
 /* Botón hamburguesa (sólo móvil) */
@@ -222,15 +224,18 @@ body.nav-open .nav-toggle span::after { transform: translateY(-7px) rotate(-45de
 /* ------------------------------------------------------------------ Hero -- */
 .hero {
   position: relative;
-  min-height: min(100vh, 860px);
   display: flex;
-  align-items: flex-start;
-  padding: clamp(56px, 8vh, 104px) var(--gutter) clamp(70px, 8vw, 110px);
+  align-items: center;
+  padding: clamp(56px, 8vh, 104px) var(--gutter) clamp(48px, 4.5vw, 72px);
   overflow: hidden;
 }
 .hero__band {
-  position: absolute; inset: 0; background: var(--coral); z-index: 0;
-  clip-path: polygon(0 87%, 100% 47%, 100% 100%, 0 100%);
+  /* bottom en -2px (en vez de 0, como el resto del inset) para tapar el
+     hairline que a veces deja el redondeo de subpíxel entre el hero y la
+     sección siguiente, que también es coral. */
+  position: absolute; top: 0; left: 0; right: 0; bottom: -2px;
+  background: var(--coral); z-index: 0;
+  clip-path: polygon(0 96%, 100% 47%, 100% 100%, 0 100%);
 }
 .hero__grid {
   position: relative; z-index: 2;
@@ -253,24 +258,22 @@ body.nav-open .nav-toggle span::after { transform: translateY(-7px) rotate(-45de
 .pitch {
   position: relative;
   background: var(--coral);
-  /* padding-bottom deja lugar a la diagonal de .pitch::after -- tiene que
-     medir lo mismo que su height (ver más abajo) para que el texto nunca
-     quede tapado por el recorte. padding-top se mantiene chico a propósito:
-     la banda coral del hero (.hero__band) ya aporta bastante coral arriba
-     de esta sección, así que un padding-top grande corría el texto hacia
-     abajo y lo hacía ver menos centrado (y, en pantallas muy anchas, lo
-     empujaba hasta pisar la diagonal). */
-  padding: clamp(60px, 8vw, 110px) var(--gutter) clamp(130px, 19vw, 240px);
+  /* padding-top fijo y chico a propósito: entre la ilustración del hero y
+     el asterisco no hay nada más que coral, así que todo lo que sobre acá
+     se lee como un bloque vacío (no escala con el ancho por eso mismo: en
+     pantallas anchas el hueco ya se ve más grande de por sí). El
+     padding-bottom sí es grande porque tiene que medir lo mismo que
+     .pitch::after (ver abajo): si fuera menor, la diagonal de salida se
+     comería el final del texto. */
+  padding: 24px var(--gutter) clamp(96px, 8.5vw, 150px);
   text-align: center;
 }
 .pitch__mark { display: block; margin: 0 auto 26px; width: 46px; height: 46px; }
 .pitch p { max-width: 60ch; margin: 0 auto; font-size: 1.06rem; }
 .pitch::after {
-  content: ""; position: absolute; left: 0; right: 0; bottom: -1px;
-  /* Mismo clamp que el padding-bottom: si el recorte fuera más alto que el
-     padding, la diagonal se comería parte del texto en pantallas anchas. */
-  height: clamp(130px, 19vw, 240px);
-  background: var(--bg); clip-path: polygon(0 62%, 100% 0, 100% 100%, 0 100%);
+  content: ""; position: absolute; left: 0; right: 0; bottom: -2px;
+  height: clamp(96px, 8.5vw, 150px);
+  background: var(--bg); clip-path: polygon(100% 0, 100% 100%, 0 100%);
 }
 
 /* --------------------------------------------------------------- Pilares -- */
@@ -328,75 +331,69 @@ body.nav-open .nav-toggle span::after { transform: translateY(-7px) rotate(-45de
 .polaroid:nth-child(2) { left: 25%; top: 21%; transform: rotate(4deg); z-index: 1; }
 .polaroid:nth-child(3) { left: 46%; top: 42%; transform: rotate(-4deg); z-index: 3; }
 
-/* --------------------------------------------------------------- Escribo -- */
-.write { text-align: center; }
-.write__quote {
-  font-family: var(--font-display); font-style: italic;
-  font-size: clamp(1.5rem, 3.2vw, 2.2rem); line-height: 1.3;
-  max-width: 20ch; margin: 0 auto 1.6em;
+/* ------------------------------------------------------------- Proyectos --
+   Índice simplificado: imagen → hover → aparece el nombre → click → abre
+   el caso. Sin nombre ni bajada visibles de entrada (ver criterio del
+   cliente para "Trabajo con marcas"). En touch, donde no hay hover, el
+   nombre queda visible directamente (ver media query más abajo). */
+.projects { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(20px, 2.8vw, 36px); }
+.project-card__link {
+  position: relative; display: block; overflow: hidden; border-radius: var(--radius);
 }
-
-/* --------------------------------------------------------- Tarjetas post -- */
-.posts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(26px, 3.6vw, 46px); }
-.post { position: relative; }
-.post__media { position: relative; margin-bottom: 26px; }
-.post__media .ph { aspect-ratio: 16 / 10; position: relative; z-index: 2; }
-.post__media::before {
-  content: ""; position: absolute; left: -14px; top: -14px; width: 62%; height: 62%;
-  background: var(--coral); z-index: 1;
+.project-card__link .ph { aspect-ratio: 4 / 3; transition: transform .5s var(--ease); }
+.project-card__link:hover .ph,
+.project-card__link:focus-visible .ph { transform: scale(1.05); }
+.project-card__link::after {
+  content: ""; position: absolute; inset: 0; background: var(--coral);
+  opacity: 0; transition: opacity .3s var(--ease);
 }
-.post:nth-child(2n) .post__media::before { background: var(--teal); left: auto; right: -14px; top: auto; bottom: -14px; }
-.post__title { font-family: var(--font-display); font-style: italic; font-size: 1.5rem; margin-bottom: .25em; }
-.post__meta { font-size: .78rem; color: var(--muted); letter-spacing: .04em; margin-bottom: 1.1em; }
-.post p { font-size: .95rem; }
-
-/* ------------------------------------------------------------- Proyectos -- */
-.projects { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(24px, 3vw, 40px); }
-.project-card {
-  display: flex; flex-direction: column; background: var(--white);
-  box-shadow: 0 2px 0 rgba(20,16,15,.04);
-  transition: transform .3s var(--ease), box-shadow .3s var(--ease);
-}
-.project-card:hover { transform: translateY(-5px); box-shadow: 0 18px 40px rgba(20,16,15,.1); }
-.project-card .ph { aspect-ratio: 4 / 3; }
-.project-card__body { padding: 26px 28px 30px; display: flex; flex-direction: column; flex: 1; }
-.project-card__name { font-family: var(--font-display); font-style: italic; font-size: 1.55rem; margin-bottom: .3em; }
-.project-card__kicker {
-  font-size: .64rem; letter-spacing: .22em; text-transform: uppercase;
-  color: var(--muted); font-weight: 600; margin-bottom: 1em;
-}
-.project-card p { font-size: .93rem; color: #3a3533; }
-.project-card .link-arrow { margin-top: auto; padding-top: 1.4em; }
-
-/* Detalle de proyecto */
-.project-hero {
-  position: relative; overflow: hidden; text-align: center;
-  padding: clamp(96px, 12vw, 170px) var(--gutter) clamp(70px, 9vw, 120px);
-}
-.project-hero__band {
-  position: absolute; inset: 0; background: var(--coral-soft); z-index: 0;
-  clip-path: polygon(0 0, 100% 0, 100% 82%, 0 100%);
-}
-.project-hero__title {
+.project-card:nth-child(even) .project-card__link::after { background: var(--teal); }
+.project-card__link:hover::after,
+.project-card__link:focus-visible::after { opacity: .92; }
+.project-card__name {
+  position: absolute; inset: 0; z-index: 1; display: grid; place-items: center;
+  padding: 20px; text-align: center; pointer-events: none;
   font-family: var(--font-display); font-style: italic; font-weight: 500;
-  font-size: clamp(3rem, 7vw, 5.4rem); margin: 0;
+  font-size: clamp(1.1rem, 1.9vw, 1.5rem); color: #fff;
+  opacity: 0; transition: opacity .3s var(--ease);
 }
+.project-card:nth-child(even) .project-card__name { color: var(--ink); }
+.project-card__link:hover .project-card__name,
+.project-card__link:focus-visible .project-card__name { opacity: 1; }
+
+@media (max-width: 640px) {
+  .project-card__link::after { opacity: .5; }
+  .project-card__name { opacity: 1; }
+}
+
+/* Detalle de proyecto -- reusa el sistema .page-hero (misma cabecera que el
+   resto de las páginas internas) más una variante con foto y el logo de la
+   marca en una placa circular sobre el pliegue diagonal. */
+span.page-hero__badge {
+  position: absolute; z-index: 2;
+  top: clamp(30px, 4.5vw, 62px); left: clamp(60px, 8vw, 140px);
+  width: clamp(96px, 10vw, 140px); aspect-ratio: 1; border-radius: 50%;
+  box-shadow: 0 14px 34px rgba(20, 16, 15, .2);
+  border: 6px solid var(--bg);
+}
+
 .cols-2 { columns: 2; column-gap: clamp(30px, 4vw, 60px); }
 .cols-2 p { break-inside: avoid; }
 .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(20px, 3vw, 34px); }
 .grid-2 .ph { aspect-ratio: 1; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(18px, 2.6vw, 30px); }
+.grid-3 .ph { aspect-ratio: 1; }
 
 .pager { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; border-top: 1px solid var(--line); padding-top: 28px; }
+.project-trust { padding-top: clamp(48px, 6vw, 80px); margin-top: clamp(48px, 6vw, 80px); border-top: 1px solid var(--line); }
 
 /* --------------------------------------------------------------- Agencias -- */
 .agencies {
   display: flex; flex-wrap: wrap; justify-content: center;
   gap: clamp(20px, 3.2vw, 46px); align-items: center;
 }
-.agencies li {
-  list-style: none; font-weight: 600; font-size: clamp(.95rem, 1.6vw, 1.15rem);
-  letter-spacing: -.01em; color: #201b19; opacity: .82;
-}
+.agencies li { list-style: none; display: flex; align-items: center; opacity: .85; }
+.agencies img { height: clamp(24px, 2.6vw, 36px); width: auto; display: block; }
 
 .brand-list { columns: 3; column-gap: 40px; list-style: none; margin: 0; padding: 0; font-size: .95rem; }
 .brand-list li { padding: 5px 0; border-bottom: 1px solid var(--line); break-inside: avoid; color: #3a3533; }
@@ -450,6 +447,21 @@ body.nav-open .nav-toggle span::after { transform: translateY(-7px) rotate(-45de
 .version h3 { font-family: var(--font-display); font-style: italic; font-size: 1.5rem; margin-bottom: .1em; }
 .version__claim { font-size: .82rem; font-weight: 600; letter-spacing: .04em; color: var(--coral); margin-bottom: 1em; }
 .version p { font-size: .94rem; color: #3a3533; }
+
+/* --------------------------------------------------------- Grid de gente -- */
+.people-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: clamp(28px, 4vw, 46px);
+}
+.person__photo { width: 100%; aspect-ratio: 1; margin-bottom: 20px; }
+.person__name {
+  font-family: var(--font-display); font-style: italic; font-weight: 500;
+  font-size: 1.32rem; margin-bottom: .15em;
+}
+.person__role { font-size: .9rem; color: #3a3533; margin-bottom: 1.1em; }
+.socials--person a { width: 30px; height: 30px; background: var(--coral); }
+.socials--person a:hover { background: var(--ink); }
+.socials--person svg { width: 13px; height: 13px; }
 
 /* Cita destacada */
 .pullquote {
@@ -542,13 +554,14 @@ body.nav-open .nav-toggle span::after { transform: translateY(-7px) rotate(-45de
   .hero__band { clip-path: polygon(0 88%, 100% 74%, 100% 100%, 0 100%); }
   .travel__grid { grid-template-columns: 1fr; }
   .travel__band { clip-path: polygon(0 14%, 100% 4%, 100% 88%, 0 98%); }
-  .pillars, .posts, .projects { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pillars, .projects, .grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .brand-list { columns: 2; }
+  span.page-hero__badge { top: clamp(50px, 8vw, 90px); left: clamp(30px, 6vw, 70px); width: clamp(76px, 16vw, 110px); }
 }
 
 @media (max-width: 640px) {
   body { font-size: 16px; }
-  .pillars, .posts, .projects, .grid-2 { grid-template-columns: 1fr; }
+  .pillars, .projects, .grid-2, .grid-3 { grid-template-columns: 1fr; }
   .pillar__media { max-width: 300px; }
   .cols-2 { columns: 1; }
   .brand-list { columns: 1; }
@@ -568,6 +581,11 @@ body.nav-open .nav-toggle span::after { transform: translateY(-7px) rotate(-45de
 }
 .page-hero--coral .page-hero__band { background: var(--coral); }
 .page-hero--teal .page-hero__band { background: var(--teal); }
+/* Variante con foto real pendiente: el "band" pasa a ser un marcador .ph
+   (mismo criterio que el resto del sitio) en vez de un color sólido, así
+   que el título necesita tinta oscura en las dos líneas para leerse. */
+.page-hero--photo .page-hero__title,
+.page-hero--photo .page-hero__title em { color: var(--ink); }
 
 .page-hero .wrap { max-width: 1120px; }
 
@@ -585,7 +603,6 @@ body.nav-open .nav-toggle span::after { transform: translateY(-7px) rotate(-45de
 .page-hero__note p { margin: 0; font-size: 1.02rem; line-height: 1.6; }
 
 .asterisk { width: clamp(40px, 5vw, 62px); height: auto; flex: 0 0 auto; fill: var(--ink); }
-.pitch__mark { fill: #fff; }
 
 /* ==========================================================================
    Texto largo a dos columnas con aparte
