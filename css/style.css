@@ -292,7 +292,7 @@ body.nav-open .nav-toggle span::after { transform: translateY(-7px) rotate(-45de
   width: 100%; aspect-ratio: 1; border-radius: 50%; overflow: hidden;
   margin-bottom: 30px;
 }
-.pillar__media > * { width: 100%; height: 100%; border-radius: 50%; }
+.pillar__media > * { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
 .pillar__title {
   font-family: var(--font-display); font-style: italic; font-weight: 500;
   font-size: clamp(1.7rem, 2.6vw, 2.2rem); line-height: 1.12; margin-bottom: .5em;
