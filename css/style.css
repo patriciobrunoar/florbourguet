@@ -258,14 +258,14 @@ body.nav-open .nav-toggle span::after { transform: translateY(-7px) rotate(-45de
 .pitch {
   position: relative;
   background: var(--coral);
-  /* padding-top fijo y chico a propósito: entre la ilustración del hero y
-     el asterisco no hay nada más que coral, así que todo lo que sobre acá
-     se lee como un bloque vacío (no escala con el ancho por eso mismo: en
-     pantallas anchas el hueco ya se ve más grande de por sí). El
-     padding-bottom sí es grande porque tiene que medir lo mismo que
-     .pitch::after (ver abajo): si fuera menor, la diagonal de salida se
-     comería el final del texto. */
-  padding: 24px var(--gutter) clamp(96px, 8.5vw, 150px);
+  /* Sin padding-top: entre la ilustración del hero y el asterisco no hay
+     nada más que coral, así que cualquier padding acá se lee como un
+     bloque vacío. El margin-bottom de .pitch__mark ya separa el ícono del
+     párrafo, así que no hace falta padding-top para que no queden pegados
+     al borde de la sección. El padding-bottom sí es grande porque tiene
+     que medir lo mismo que .pitch::after (ver abajo): si fuera menor, la
+     diagonal de salida se comería el final del texto. */
+  padding: 0 var(--gutter) clamp(96px, 8.5vw, 150px);
   text-align: center;
 }
 .pitch__mark { display: block; margin: 0 auto 26px; width: 46px; height: 46px; }
