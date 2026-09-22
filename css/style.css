@@ -232,10 +232,15 @@ body.nav-open .nav-toggle span::after { transform: translateY(-7px) rotate(-45de
 .hero__band {
   /* bottom en -2px (en vez de 0, como el resto del inset) para tapar el
      hairline que a veces deja el redondeo de subpíxel entre el hero y la
-     sección siguiente, que también es coral. */
+     sección siguiente, que también es coral. El punto izquierdo del
+     polígono (130%, a propósito por debajo del 100%) quedó desactualizado
+     cuando se achicó el padding-bottom del .hero: con un hero más bajo, el
+     mismo 96% quedaba más arriba en píxeles y la diagonal terminaba
+     pisando el botón "Conocé lo que hago". Probado en 1100-2560px sin que
+     el botón toque el coral. */
   position: absolute; top: 0; left: 0; right: 0; bottom: -2px;
   background: var(--coral); z-index: 0;
-  clip-path: polygon(0 96%, 100% 47%, 100% 100%, 0 100%);
+  clip-path: polygon(0 130%, 100% 47%, 100% 100%, 0 100%);
 }
 .hero__grid {
   position: relative; z-index: 2;
