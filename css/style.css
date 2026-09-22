@@ -329,13 +329,16 @@ body.nav-open .nav-toggle span::after { transform: translateY(-7px) rotate(-45de
    contenedor con aspect-ratio fijo, así el abanico escala sin recortarse. */
 .polaroids { position: relative; width: 100%; max-width: 460px; aspect-ratio: 5 / 6; margin: 0 auto; }
 .polaroid {
-  position: absolute; width: 54%;
+  position: absolute; width: 50%;
   background: #fff; padding: 10px 10px 22px; box-shadow: 0 16px 34px rgba(0,0,0,.16);
 }
 .polaroid .ph { aspect-ratio: 3 / 4; width: 100%; height: auto; object-fit: cover; }
-.polaroid:nth-child(1) { left: 0; top: 0; transform: rotate(-7deg); z-index: 2; }
-.polaroid:nth-child(2) { left: 25%; top: 21%; transform: rotate(4deg); z-index: 1; }
-.polaroid:nth-child(3) { left: 46%; top: 42%; transform: rotate(-4deg); z-index: 3; }
+/* z-index ascendente (1,2,3) para que cada foto tape sólo un borde de la
+   anterior, en vez de que la del medio quede escondida entre las otras
+   dos (pasaba antes, con la del medio en el z-index más bajo). */
+.polaroid:nth-child(1) { left: 0; top: 0; transform: rotate(-8deg); z-index: 1; }
+.polaroid:nth-child(2) { left: 30%; top: 36%; transform: rotate(5deg); z-index: 2; }
+.polaroid:nth-child(3) { left: 50%; top: 52%; transform: rotate(-3deg); z-index: 3; }
 
 /* ------------------------------------------------------------- Proyectos --
    Índice simplificado: imagen → hover → aparece el nombre → click → abre
