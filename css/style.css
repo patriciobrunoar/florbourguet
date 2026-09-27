@@ -358,6 +358,7 @@ body.nav-open .nav-toggle span::after { transform: translateY(-7px) rotate(-45de
   position: relative; display: block; overflow: hidden; border-radius: var(--radius);
 }
 .project-card__link .ph { aspect-ratio: 4 / 3; transition: transform .5s var(--ease); }
+.project-card__link img.ph { object-fit: cover; }
 .project-card__link:hover .ph,
 .project-card__link:focus-visible .ph { transform: scale(1.05); }
 .project-card__link::after {
