@@ -514,22 +514,10 @@ span.page-hero__badge {
 }
 
 /* --------------------------------------------------------- Coming soon --- */
-.soon {
-  position: relative; overflow: hidden; text-align: center;
-  padding: clamp(100px, 13vw, 180px) var(--gutter);
-}
-.soon__band {
-  position: absolute; inset: 0; background: var(--teal); z-index: 0;
-  clip-path: polygon(0 22%, 100% 0, 100% 78%, 0 100%);
-}
 .soon__pill {
   display: inline-block; background: var(--ink); color: #fff;
   font-size: .66rem; letter-spacing: .28em; text-transform: uppercase;
   font-weight: 600; padding: 9px 18px; border-radius: 30px; margin-bottom: 1.6em;
-}
-.soon__title {
-  font-family: var(--font-display); font-style: italic; font-weight: 500;
-  font-size: clamp(3rem, 7.5vw, 5.6rem); margin: 0 0 .3em;
 }
 
 /* ------------------------------------------------------------ Marcadores -- */
