@@ -415,13 +415,25 @@ span.page-hero__badge {
   display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(20px, 4vw, 32px) clamp(24px, 4vw, 40px);
   align-items: center;
+  margin: 0; padding: 0;
 }
-.agencies li { list-style: none; display: flex; align-items: center; justify-content: center; opacity: .85; }
-.agencies img { height: clamp(52px, 8vw, 96px); width: auto; display: block; }
+.agencies li { list-style: none; opacity: .85; }
+/* width:100% + height:auto (en vez de una altura fija en vw) para que el
+   logo siempre escale a partir del ancho real de su columna -- con una
+   altura fija, en el rango en que el grid pasa a 5 columnas (1001-1550px
+   aprox.) la columna quedaba más angosta que ese ancho "natural" y el
+   img{max-width:100%} global lo achicaba sólo en ancho, deformándolo.
+   Sin flex en el <li> (que rompía el centrado de la columna) y con
+   margin:auto para cuando el max-width frena el logo antes de llenar
+   la columna entera. */
+.agencies img { width: 100%; max-width: 170px; height: auto; margin: 0 auto; display: block; }
 
 /* En desktop son 10 logos: grilla de 5 columnas x 2 filas en vez de las
-   2 columnas de mobile. */
-@media (min-width: 1001px) {
+   2 columnas de mobile. El corte se deja en 1400px (no en el breakpoint
+   de la sidebar, 1001px) porque con el wrap angosto de un laptop chico
+   una grilla de 5 dejaba cada logo con menos ancho que su columna en
+   mobile -- se veían más chicos que en mobile en vez de más grandes. */
+@media (min-width: 1400px) {
   .agencies { grid-template-columns: repeat(5, minmax(0, 1fr)); }
 }
 
