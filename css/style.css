@@ -384,15 +384,7 @@ body.nav-open .nav-toggle span::after { transform: translateY(-7px) rotate(-45de
 }
 
 /* Detalle de proyecto -- reusa el sistema .page-hero (misma cabecera que el
-   resto de las páginas internas) más una variante con foto y el logo de la
-   marca en una placa circular sobre el pliegue diagonal. */
-span.page-hero__badge {
-  position: absolute; z-index: 2;
-  top: clamp(30px, 4.5vw, 62px); left: clamp(60px, 8vw, 140px);
-  width: clamp(96px, 10vw, 140px); aspect-ratio: 1; border-radius: 50%;
-  box-shadow: 0 14px 34px rgba(20, 16, 15, .2);
-  border: 6px solid var(--bg);
-}
+   resto de las páginas internas). */
 
 .cols-2 { columns: 2; column-gap: clamp(30px, 4vw, 60px); }
 .cols-2 p { break-inside: avoid; }
@@ -573,7 +565,6 @@ span.page-hero__badge {
   .travel__band { clip-path: polygon(0 14%, 100% 4%, 100% 88%, 0 98%); }
   .pillars, .projects, .grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .brand-list { columns: 2; }
-  span.page-hero__badge { top: clamp(50px, 8vw, 90px); left: clamp(30px, 6vw, 70px); width: clamp(76px, 16vw, 110px); }
 }
 
 @media (max-width: 640px) {
@@ -598,11 +589,6 @@ span.page-hero__badge {
 }
 .page-hero--coral .page-hero__band { background: var(--coral); }
 .page-hero--teal .page-hero__band { background: var(--teal); }
-/* Variante con foto real pendiente: el "band" pasa a ser un marcador .ph
-   (mismo criterio que el resto del sitio) en vez de un color sólido, así
-   que el título necesita tinta oscura en las dos líneas para leerse. */
-.page-hero--photo .page-hero__title,
-.page-hero--photo .page-hero__title em { color: var(--ink); }
 
 .page-hero .wrap { max-width: 1120px; }
 
