@@ -393,6 +393,7 @@ body.nav-open .nav-toggle span::after { transform: translateY(-7px) rotate(-45de
 .grid-2 .ph { aspect-ratio: 1; }
 .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(18px, 2.6vw, 30px); }
 .grid-3 .ph { aspect-ratio: 1; }
+.grid-2 img.ph, .grid-3 img.ph { object-fit: cover; }
 
 .pager { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; border-top: 1px solid var(--line); padding-top: 28px; }
 .project-trust { padding-top: clamp(48px, 6vw, 80px); margin-top: clamp(48px, 6vw, 80px); border-top: 1px solid var(--line); }
