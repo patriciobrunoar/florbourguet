@@ -700,18 +700,8 @@ span.page-hero__badge {
 .site-footer { position: relative; }
 
 .footer-contact {
-  position: relative; overflow: hidden; text-align: center; background: var(--bg);
+  position: relative; overflow: hidden; text-align: center; background: var(--bg-alt);
   padding: clamp(120px, 16vw, 210px) var(--gutter) clamp(130px, 17vw, 220px);
-}
-.footer-contact__coral {
-  position: absolute; inset: 0; background: var(--coral); z-index: 0;
-  /* Comparte el borde diagonal con .footer-contact__teal (0 98%, 100% 78%) para
-     que no quede una franja del fondo crema asomando entre las dos bandas. */
-  clip-path: polygon(0 98%, 100% 78%, 100% 100%, 0 100%);
-}
-.footer-contact__teal {
-  position: absolute; inset: 0; background: var(--teal); z-index: 1;
-  clip-path: polygon(0 26%, 100% 6%, 100% 78%, 0 98%);
 }
 .footer-contact .wrap { z-index: 2; }
 .footer-contact .section-title::after { background: var(--coral); }
